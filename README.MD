@@ -1,7 +1,7 @@
-# MS17-010 (EternalBlue) Exploitation & Remediation Lab
+# Windows Vulnerability Assessment and Remediation Lab
 
 ## Objective
-Demonstrate a practical understanding of OS vulnerabilities, network scanning, and the critical importance of patch management in Windows environments by simulating an exploit on an unpatched system.
+Demonstrate the impact of unpatched Windows systems and validate the effectiveness of Microsoft security updates through a controlled lab environment.
 
 ## Tools & Environment
 * **Hypervisor:** VMWARE (Isolated Internal Network)
@@ -47,8 +47,23 @@ Successfully executed the payload, gaining a remote SYSTEM shell on the target W
 
 
 ## Technical Remediation (IT Support Perspective)
+
 To prevent this vulnerability in a production environment, the following actions are required:
 
-* Deploy Microsoft Security Bulletin MS17-010 via WSUS or standalone update installers.
-* Disable SMBv1 protocol across the network using PowerShell if legacy support is not required.
-* Ensure host-based firewalls block external access to port 445.
+Deploy Microsoft Security Update MS17-010 using WSUS or Microsoft Update Catalog.
+
+Disable SMBv1 using PowerShell or Group Policy.
+
+Block inbound SMB traffic (TCP 445) at the firewall perimeter.
+
+Enable Windows Defender Firewall.
+
+Maintain regular Windows Update cycles.
+
+Monitor SMB-related events through Windows Event Viewer or a SIEM platform.
+
+Validate remediation by rescanning with Nmap.
+
+## Conclusion
+
+This lab demonstrates how outdated Windows systems can be compromised when critical security updates are missing. Beyond exploitation, it highlights the importance of proactive patch management, secure network configuration, and continuous vulnerability validation to reduce organizational risk.
